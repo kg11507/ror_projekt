@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
-
+    @comment.user=current_user
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.event, :notice => 'Comment was successfully created.' }

@@ -12,7 +12,7 @@
   <% @books.each do |book| %>
     <tr>
       <td><%= book.title %></td>
-      <td><%= book.author %></td>
+      <td><%= book.author.name+" "+book.author.surname %></td>
       <td><%= link_to 'Show', book %></td>
       <%if(current_user!=nil && current_user.admin)%>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>

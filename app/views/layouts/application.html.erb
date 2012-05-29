@@ -4,30 +4,31 @@
     <title>Devise2</title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
-    <%= stylesheet_link_tag "datatable_page" %>
-    <%= stylesheet_link_tag "datatable_table" %>
-    <%= javascript_include_tag 'jquery.dataTables.min' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div>
-      <%= link_to "Books", books_url   %>
-      <%= link_to "Authors", authors_url   %>
-      <%= link_to "Events", events_url   %>
-      <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-      <% else %>
-        <%= link_to('Login', new_user_session_path)  %>  
-      <% end %>
-      <% if user_signed_in? %>
-        <%= link_to('Edit registration', edit_user_registration_path) %>
-      <% else %>
-        <%= link_to('Register', new_user_registration_path)  %>
-      <% end %>
-    </div>
-    <p id="notice"><%= notice %></p>
-
-    <%= yield %>
-    <br/>
+    
+      <div id="leftnav">
+        <p>
+            <%= link_to "Books", books_url   %><br>
+            <%= link_to "Authors", authors_url   %><br>
+            <%= link_to "Events", events_url   %><br>
+            <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        <br>
+            <% else %>
+              <%= link_to('Login', new_user_session_path)  %>  <br>
+            <% end %>
+            <% if user_signed_in? %>
+              <%= link_to('Edit registration', edit_user_registration_path) %><br>
+            <% else %>
+              <%= link_to('Register', new_user_registration_path)  %><br>
+            <% end %>
+        </p>
+      </div>
+      <div id="content">
+        <p id="notice"><%= notice %></p>
+          <%= yield %>
+      </div>
+    
   </body>
 </html>

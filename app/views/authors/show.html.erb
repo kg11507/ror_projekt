@@ -14,8 +14,10 @@
   <b>Description:</b>
   <%= @author.description %>
 </p>
-<%= render :partial=>"book_list", :locals =>{:books=>@author.books } %>
-<%if(current_user!=nil && current_user.admin)%>
-  <%= link_to 'Edit', edit_author_path(@author) %> |
-<%end%>
-<%= link_to 'Back', authors_path %>
+<div style="border-top: 1px solid gray;">
+  <%= render :partial=>"book_list", :locals =>{:books=>@author.books } %>
+  <%if(current_user!=nil && current_user.admin)%>
+    <%= link_to 'Edit', edit_author_path(@author) %> |
+  <%end%>
+  <%= link_to 'Back', authors_path %>
+</div>
