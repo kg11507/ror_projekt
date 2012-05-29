@@ -9,19 +9,21 @@
     <th></th>
   </tr>
 
-<% @books.each do |book| %>
-  <tr>
-    <td><%= book.title %></td>
-    <td><%= book.author %></td>
-    <td><%= link_to 'Show', book %></td>
-    
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= link_to 'Show', book %></td>
+      <%if(current_user.admin)%>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    
         <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
-      </tr>
-<% end %>
+      <%end%>
+    </tr>
+  <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Book', new_book_path %>
+<%= will_paginate @books %>
+<%if(current_user.admin)%>
+  <%= link_to 'New Book', new_book_path %>
+<%end%>

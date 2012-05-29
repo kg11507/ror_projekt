@@ -10,18 +10,22 @@
     <th></th>
   </tr>
 
-<% @authors.each do |author| %>
-  <tr>
-    <td><%= author.name %></td>
-    <td><%= author.surname %></td>
-    <td><%= author.description %></td>
-    <td><%= link_to 'Show', author %></td>
-    <td><%= link_to 'Edit', edit_author_path(author) %></td>
-    <td><%= link_to 'Destroy', author, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.name %></td>
+      <td><%= author.surname %></td>
+      <td><%= author.description %></td>
+      <td><%= link_to 'Show', author %></td>
+      <% if(current_user.admin) %>
+        <td><%= link_to 'Edit', edit_author_path(author) %></td>
+        <td><%= link_to 'Destroy', author, :confirm => 'Are you sure?', :method => :delete %></td>
+      <%end%>
+    </tr>
+  <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Author', new_author_path %>
+<%= will_paginate @authors %>
+<% if(current_user.admin) %>
+  <%= link_to 'New Author', new_author_path %>
+<%end%>

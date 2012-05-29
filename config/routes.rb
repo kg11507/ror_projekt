@@ -1,11 +1,13 @@
 Devise2::Application.routes.draw do
+  resources :comments
+
+  devise_for :users
+
   resources :events
 
   resources :authors
 
   resources :books
-
-  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

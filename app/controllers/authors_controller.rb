@@ -1,8 +1,11 @@
 class AuthorsController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter :find_users, :only => [:new, :edit, :update, :create]
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
+    #    @authors = Author.all
+    @authors = Author.paginate(:page => params[:page], :per_page=>10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +83,13 @@ class AuthorsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+      
+  protected
+  def find_users
+    @users = User.find(:all).map do |user|
+      [user.email, user.id]
+    end
+  end
+  
 end

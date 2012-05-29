@@ -14,7 +14,8 @@
   <b>Description:</b>
   <%= @author.description %>
 </p>
-
-
-<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= render :partial=>"book_list", :locals =>{:books=>@author.books } %>
+<%if(current_user.admin)%>
+  <%= link_to 'Edit', edit_author_path(@author) %> |
+<%end%>
 <%= link_to 'Back', authors_path %>

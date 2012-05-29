@@ -29,4 +29,5 @@ Devise2::Application.configure do
   config.assets.debug = true
   
   config.gem 'cancan'
+  config.gem 'gridify'
 end

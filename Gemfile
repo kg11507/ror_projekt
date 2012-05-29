@@ -9,6 +9,10 @@ gem 'sqlite3'
 
 gem 'json'
 
+group :production do
+  gem "pg"
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -20,6 +24,10 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
+gem 'gridify'
+gem 'datatables'
+gem 'simple_datatables'
+gem 'will_paginate'
 
 
 # To use ActiveModel has_secure_password

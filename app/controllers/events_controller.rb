@@ -1,8 +1,11 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter :find_users, :only => [:new, :edit, :update, :create]
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    #    @events = Event.all
+    @events = Event.paginate(:page => params[:page], :per_page=>10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +44,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    @event.user_id = current_user.id
 
     respond_to do |format|
       if @event.save
@@ -57,7 +61,7 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
+    @event.user_id = current_user.id
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to events_url, :notice => 'Event was successfully updated.' }
@@ -80,4 +84,13 @@ class EventsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+    
+  protected
+  def find_users
+    @users = User.find(:all).map do |user|
+      [user.email, user.id]
+    end
+  end
+  
 end
