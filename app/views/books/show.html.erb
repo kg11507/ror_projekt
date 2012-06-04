@@ -5,10 +5,15 @@
 
 <p>
   <b>Author:</b>
-  <%= @book.author.name+" "+@book.author.surname %>
+  <%= link_to (@book.author.name+" "+@book.author.surname), @book.author %>
 </p>
 
 <%if(current_user!=nil && current_user.admin)%>
   <%= link_to 'Edit', edit_book_path(@book) %> |
 <%end%>
 <%= link_to 'Back', books_path %>
+<div style="border-top: 1px solid gray;">
+  <%= render :partial=>"shared/example_list", :locals =>{:examples=>@book.examples, :book_id=>@book.id } %>
+  <%= render :partial=>"shared/comment_list", :locals =>{:comments=>@book.comments, :subject_id=>@book.id, :subject_type=>"Book"} %>
+  <%= link_to "Add commet",   :controller => "comments", :action => "new", :subject_id => @book.id, :subject_type=>"Book" %>
+</div>

@@ -1,4 +1,16 @@
 Devise2::Application.routes.draw do
+  resources :examples
+
+  resources :hires
+
+  resources :reservations
+
+  resources :publishers
+
+  resources :addresses
+
+  resources :user_infos
+
   resources :comments
 
   devise_for :users
@@ -34,6 +46,18 @@ Devise2::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  
+  # Sample resource route with options:
+  resources :examples do
+    member do
+      get 'reserve'
+      get 'unreserve'
+    end
+  
+#    collection do
+#      get 'sold'
+#    end
+  end
 
   # Sample resource route with sub-resources:
   #   resources :products do
@@ -65,4 +89,5 @@ Devise2::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
 end

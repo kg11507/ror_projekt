@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Book:</b>
+  <%= @example.book_id %>
+</p>
+
+<p>
+  <b>Publisher:</b>
+  <%= @example.publisher_id %>
+</p>
+
+<p>
+  <b>Publish date:</b>
+  <%= @example.publish_date %>
+</p>
+
+<p>
+  <b>Buy date:</b>
+  <%= @example.buy_date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @example.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_example_path(@example) %> |
+<%= link_to 'Back', examples_path %>

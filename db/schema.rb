@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529025731) do
+ActiveRecord::Schema.define(:version => 20120603225003) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "city"
+    t.string   "street"
+    t.string   "house_nr"
+    t.string   "local_nr"
+    t.string   "postal_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -30,7 +40,9 @@ ActiveRecord::Schema.define(:version => 20120529025731) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
-    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.string   "subject_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,8 +55,46 @@ ActiveRecord::Schema.define(:version => 20120529025731) do
     t.datetime "updated_at"
   end
 
+  create_table "examples", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "publisher_id"
+    t.datetime "publish_date"
+    t.datetime "buy_date"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hires", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "publishers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservations", :force => true do |t|
+    t.integer  "example_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_infos", :force => true do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "nickname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

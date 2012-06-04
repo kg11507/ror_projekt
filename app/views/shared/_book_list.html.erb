@@ -1,0 +1,14 @@
+<h1>Books</h1>
+<table>
+<tr>
+<th>Title</th>
+</tr>
+<% books.each do |book| %>
+<tr>
+  <td><%= link_to book.title, book %></td>
+</tr>
+<% end %>
+</table>
+
+<%# no i tutaj pomysl co sie dzieje jesli to jest pod wydawnictwiem o czywiscie moge to dac pod partialem i wtedy nie ma klopotu ale moze warto to jakos zgeneralizowac%>
+<br />

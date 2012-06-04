@@ -10,9 +10,16 @@
     
       <div id="leftnav">
         <p>
-            <%= link_to "Books", books_url   %><br>
-            <%= link_to "Authors", authors_url   %><br>
-            <%= link_to "Events", events_url   %><br>
+            <%= link_to "Books", books_url   %><br/>
+            <%= link_to "Authors", authors_url   %><br/>
+            <%= link_to "Events", events_url   %><br/>
+            <%= link_to "UserInfos", user_infos_url   %><br/>
+            <%= link_to "Publishers", publishers_url   %><br/>
+            <%= link_to "Addresses", addresses_url   %><br/>
+            <%= link_to "Examples", examples_url   %><br/>
+            <%= link_to "Reservations", reservations_url   %><br/>
+            <%= link_to "Hires", hires_url   %><br/>
+            <%= link_to "Comments", comments_url   %><br/>
             <% if user_signed_in? %>
               <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        <br>
             <% else %>
