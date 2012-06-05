@@ -10,7 +10,8 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @books}
+      #      format.json { render :json => @books}
+      format.json { render :json => BooksDatatable.new(view_context)}
     end
   end
 
@@ -30,7 +31,7 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @book.author_id=params[:author_id]
-#    session[:return_to] ||= request.referer
+    #    session[:return_to] ||= request.referer
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @book }
@@ -50,7 +51,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         format.html { redirect_to books_url, :notice => 'Book was successfully created.' }
-#format.html { redirect_to session[:return_to], :notice => 'Book was successfully created.' }
+        #format.html { redirect_to session[:return_to], :notice => 'Book was successfully created.' }
         format.json { render :json => @book, :status => :created, :location => @book }
       else
         format.html { render :action => "new" }

@@ -24,6 +24,28 @@
   <% end %>
 </table>
 
+
+<table id="authors">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+      <td><%= author.name %></td>
+      <td><%= author.surname %></td>
+      <td><%= author.description %></td>
+      <td><%= link_to 'Show', author %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br />
 <%= will_paginate @authors %>
 <% if(current_user!=nil && current_user.admin) %>
