@@ -1,0 +1,14 @@
+<h1>Hires</h1>
+<table>
+  <tr>
+    <th>Book</th>
+    <th></th>
+  </tr>
+  <% hires.each do |hire| %>
+    <tr>
+      <td><%= link_to hire.example.book.title, hire.example.book %></td>
+      <td><%= hire.return_status %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>

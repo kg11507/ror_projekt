@@ -11,9 +11,16 @@ class Book < ActiveRecord::Base
         if(e.reservation!=nil)
           return false
         end
+        e.hires.each do |h|
+          if(h.return_status!=false)
+            return false
+          end
+        end
       end
+      return true
+    else
+      return false
     end
-    return true
   end
   
   def self.get_selector_content

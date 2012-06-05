@@ -8,9 +8,11 @@
 
 Author.create({ :name => 'Jan', :surname => 'Kowalski', :description => 'Opis Jana Kowalskiego'})
 Author.create({ :name => 'Adam', :surname => 'Worth', :description => 'Opis Adama Worth\'a'})
+Author.create({ :name => 'John', :surname => 'Druitt', :description => 'Opis John\'a Druitt\'a'})
 
 Book.create({:title => "Book of Shadows", :author_id => 1})
 Book.create({:title => "Zwykla Ksiazka", :author_id => 2})
+Book.create({:title => "Trzecia Ksiazka", :author_id => 1})
 
 Publisher.create({:name=>"MujWydafca"})
 Publisher.create({:name=>"Fabryka Liter"})
@@ -18,7 +20,10 @@ Publisher.create({:name=>"Fabryka Liter"})
 
 Example.create({:book_id=>1, :publisher_id=>1})
 Example.create({:book_id=>2, :publisher_id=>2})
-
-User.create({:email=>"test@test.test", :admin=>true, :encrypted_password=>"$2a$10$xCwVRny0iZrTl2UscrR9m.fyzh7nF6Ll.LiR/fPisw43qOHrSrCYG", :sign_in_count=>1})
+Example.create({:book_id=>3, :publisher_id=>2})
 
 Reservation.create({:example_id=>1, :user_id=>1})
+
+Hire.create({:example_id=>1, :user_id=>1})
+Hire.create({:example_id=>1, :user_id=>1, :return_date=>DateTime.new(2000)})
+

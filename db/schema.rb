@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603225003) do
+ActiveRecord::Schema.define(:version => 20120605200236) do
 
   create_table "addresses", :force => true do |t|
     t.string   "city"
@@ -66,8 +66,9 @@ ActiveRecord::Schema.define(:version => 20120603225003) do
   end
 
   create_table "hires", :force => true do |t|
-    t.integer  "book_id"
+    t.integer  "example_id"
     t.integer  "user_id"
+    t.datetime "return_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,9 +79,17 @@ ActiveRecord::Schema.define(:version => 20120603225003) do
     t.datetime "updated_at"
   end
 
+  create_table "reservation_states", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reservations", :force => true do |t|
     t.integer  "example_id"
     t.integer  "user_id"
+    t.integer  "hire_id"
+    t.boolean  "canceled"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

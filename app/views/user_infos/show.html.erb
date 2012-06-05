@@ -20,3 +20,4 @@
 <%= link_to 'Back', user_infos_path %>
 
 <%= render :partial=>"reservation_list", :locals =>{:reservations=>@user_info.user.reservations } %>
+<%= render :partial=>"hire_list", :locals =>{:hires=>@user_info.user.hires } %>

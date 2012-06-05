@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :comments
   has_many :reservations
+  has_many :hires
   has_one :user_info
   has_and_belongs_to_many :roles
   # Include default devise modules. Others available are:
