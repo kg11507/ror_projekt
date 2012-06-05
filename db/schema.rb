@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20120603225003) do
     t.string   "name"
     t.string   "surname"
     t.string   "nickname"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :book_id %><br />
-    <%= f.number_field :book_id %>
+    <% #f.number_field :book_id %>
+    <%= f.select :book_id, Book.get_selector_content %>
   </div>
   <div class="field">
     <%= f.label :publisher_id %><br />

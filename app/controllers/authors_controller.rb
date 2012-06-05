@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
   # GET /authors.json
   def index
     #    @authors = Author.all
-    @authors = Author.paginate(:page => params[:page], :per_page=>3)
+    @authors = Author.paginate(:page => params[:page], :per_page=>10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +28,7 @@ class AuthorsController < ApplicationController
   # GET /authors/new.json
   def new
     @author = Author.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @author }

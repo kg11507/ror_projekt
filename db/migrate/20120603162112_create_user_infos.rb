@@ -4,7 +4,7 @@ class CreateUserInfos < ActiveRecord::Migration
       t.string :name
       t.string :surname
       t.string :nickname
-
+      t.integer :user_id
       t.timestamps
     end
   end

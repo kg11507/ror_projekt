@@ -15,4 +15,11 @@ class Book < ActiveRecord::Base
     end
     return true
   end
+  
+  def self.get_selector_content
+    @books = Book.all.map do |book|
+      [book.title, book.id]
+    end
+  end
+  
 end

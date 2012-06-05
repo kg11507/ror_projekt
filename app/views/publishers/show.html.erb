@@ -9,5 +9,6 @@
 <%= link_to 'Edit', edit_publisher_path(@publisher) %> |
 <%= link_to 'Back', publishers_path %>
 
-<%= render :partial=>"shared/book_list", :locals =>{:books=>@publisher.examples } %>
+<%= render :partial=>"shared/example_list", :locals =>{:examples=>@publisher.examples } %>
+<%= link_to "Add Example",  new_example_path(:publisher_id=>@publisher.id) %>
 

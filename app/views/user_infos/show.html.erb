@@ -18,3 +18,5 @@
 
 <%= link_to 'Edit', edit_user_info_path(@user_info) %> |
 <%= link_to 'Back', user_infos_path %>
+
+<%= render :partial=>"reservation_list", :locals =>{:reservations=>@user_info.user.reservations } %>

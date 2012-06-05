@@ -1,0 +1,14 @@
+<h1>Reservations</h1>
+<table>
+  <tr>
+    <th>Book</th>
+    <th></th>
+  </tr>
+  <% reservations.each do |reservation| %>
+    <tr>
+      <td><%= link_to reservation.example.book.title, reservation.example.book %></td>
+      <td><%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => reservation.example.id %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
