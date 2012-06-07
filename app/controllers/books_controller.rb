@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
-  before_filter :find_authors, :only => [:new, :edit, :update, :create]
+  before_filter :find_authors, :find_book_genres, :only => [:new, :edit, :update, :create]
   # GET /books
   # GET /books.json
   def index
@@ -93,6 +93,12 @@ class BooksController < ApplicationController
   def find_authors
     @authors = Author.find(:all).map do |author|
       [author.name + " "+ author.surname, author.id]
+    end
+  end
+  
+  def find_book_genres
+    @book_genres = BookGenre.find(:all).map do |book_genre|
+      [book_genre.name, book_genre.id]
     end
   end
 

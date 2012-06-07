@@ -27,3 +27,7 @@ Reservation.create({:example_id=>1, :user_id=>1})
 Hire.create({:example_id=>1, :user_id=>1})
 Hire.create({:example_id=>1, :user_id=>1, :return_date=>DateTime.new(2000)})
 
+BookGenre.create({:name=>"Horror"})
+BookGenre.create({:name=>"Kryminal"})
+BookGenre.create({:name=>"Fantasy"})
+

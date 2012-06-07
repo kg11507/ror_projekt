@@ -28,6 +28,7 @@
     <tr>
       <th>Title</th>
       <th>Author</th>
+      <th>Genre</th>
       <th>Popularity</th>
       <th>Available</th>
     </tr>
@@ -37,6 +38,7 @@
       <tr>
         <td><%=link_to book.title, book%></td>
         <td><%= link_to (book.author.name+" "+book.author.surname) , book.author %></td>
+        <td><%= book.book_genre.name %></td>
         <td><%= book.popularity %></td>
         <td><%= book.available? %></td>
       </tr>
@@ -46,6 +48,7 @@
 
 <br />
 <%= will_paginate @books %>
+<br />
 <%if(current_user!=nil && current_user.admin)%>
   <%= link_to 'New Book', new_book_path %>
 <%end%>

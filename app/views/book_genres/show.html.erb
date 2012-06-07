@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @book_genre.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_book_genre_path(@book_genre) %> |
+<%= link_to 'Back', book_genres_path %>

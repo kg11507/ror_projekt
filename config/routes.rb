@@ -1,4 +1,6 @@
 Devise2::Application.routes.draw do
+  resources :book_genres
+
   resources :examples
 
   resources :hires

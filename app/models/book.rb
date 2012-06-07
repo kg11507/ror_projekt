@@ -1,7 +1,8 @@
 class Book < ActiveRecord::Base
-  validates_presence_of :title, :author
+  validates_presence_of :title, :author, :book_genre
   
   belongs_to :author
+  belongs_to :book_genre
   
   has_many :comments, :as => :subject
   has_many :examples  
