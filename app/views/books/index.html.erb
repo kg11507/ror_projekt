@@ -28,6 +28,7 @@
     <tr>
       <th>Title</th>
       <th>Author</th>
+      <th>Popularity</th>
       <th>Available</th>
     </tr>
   </thead>
@@ -36,6 +37,7 @@
       <tr>
         <td><%=link_to book.title, book%></td>
         <td><%= link_to (book.author.name+" "+book.author.surname) , book.author %></td>
+        <td><%= book.popularity %></td>
         <td><%= book.available? %></td>
       </tr>
     <% end %>

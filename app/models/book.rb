@@ -30,4 +30,14 @@ class Book < ActiveRecord::Base
     end
   end
   
+  def popularity
+    counter=0
+    examples.each do |e|
+      if e.hires!=nil
+        counter += e.hires.count
+      end
+    end
+    return counter
+  end
+  
 end
