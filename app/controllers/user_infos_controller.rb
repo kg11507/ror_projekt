@@ -13,10 +13,28 @@ class UserInfosController < ApplicationController
   # GET /user_infos/1
   # GET /user_infos/1.json
   def show
-    @user_info = UserInfo.find(params[:id])
+    id=params[:id]
+    if id==nil
+      id=current_user.id
+    end
+    @user_info = UserInfo.find(id)
 
     respond_to do |format|
       format.html # show.html.erb
+      format.json { render json: @user_info }
+    end
+  end
+  
+  def my_panel
+    if(current_user==nil)
+      redirect_to "/users/sign_in", notice: 'Login first.'
+      return 
+    end
+    @user_info = User.find(current_user.id).user_info
+    
+    respond_to do |format|
+      format.html {redirect_to @user_info}
+      ## show.html.erb
       format.json { render json: @user_info }
     end
   end
