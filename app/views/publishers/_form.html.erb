@@ -1,4 +1,4 @@
-<%= form_for(@publisher) do |f| %>
+<%= form_for @publisher, :validate=>true do |f| %>
   <% if @publisher.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@publisher.errors.count, "error") %> prohibited this publisher from being saved:</h2>

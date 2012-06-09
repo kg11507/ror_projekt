@@ -35,6 +35,7 @@ gem 'datatables'
 gem 'simple_datatables'
 gem 'will_paginate'
 gem 'test-unit'
+gem 'client_side_validations'
 
 
 # To use ActiveModel has_secure_password

@@ -8,3 +8,4 @@
 //= require jquery_ujs
 //= require dataTab/jquery.dataTables
 //= require_tree .
+//= require rails.validations

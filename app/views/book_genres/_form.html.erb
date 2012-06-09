@@ -1,4 +1,4 @@
-<%= form_for(@book_genre) do |f| %>
+<%= form_for @book_genre, :validate=>true do |f| %>
   <% if @book_genre.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book_genre.errors.count, "error") %> prohibited this book_genre from being saved:</h2>
