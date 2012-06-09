@@ -10,9 +10,13 @@ Author.create({ :name => 'Jan', :surname => 'Kowalski', :description => 'Opis Ja
 Author.create({ :name => 'Adam', :surname => 'Worth', :description => 'Opis Adama Worth\'a'})
 Author.create({ :name => 'John', :surname => 'Druitt', :description => 'Opis John\'a Druitt\'a'})
 
-Book.create({:title => "Book of Shadows", :author_id => 1})
-Book.create({:title => "Zwykla Ksiazka", :author_id => 2})
-Book.create({:title => "Trzecia Ksiazka", :author_id => 1})
+BookGenre.create({:name=>"Horror"})
+BookGenre.create({:name=>"Kryminal"})
+BookGenre.create({:name=>"Fantasy"})
+
+Book.create({:title => "Book of Shadows", :author_id => 1, :book_genre_id=>1})
+Book.create({:title => "Zwykla Ksiazka", :author_id => 2, :book_genre_id=>1})
+Book.create({:title => "Trzecia Ksiazka", :author_id => 1, :book_genre_id=>1})
 
 Publisher.create({:name=>"MujWydafca"})
 Publisher.create({:name=>"Fabryka Liter"})
@@ -27,7 +31,5 @@ Reservation.create({:example_id=>1, :user_id=>1})
 Hire.create({:example_id=>1, :user_id=>1})
 Hire.create({:example_id=>1, :user_id=>1, :return_date=>DateTime.new(2000)})
 
-BookGenre.create({:name=>"Horror"})
-BookGenre.create({:name=>"Kryminal"})
-BookGenre.create({:name=>"Fantasy"})
+
 

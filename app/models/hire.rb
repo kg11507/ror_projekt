@@ -5,9 +5,9 @@ class Hire < ActiveRecord::Base
   
   def return_status
     if(return_date!=nil)
-      return return_date
+      return return_date.strftime("%d-%m-%Y")
     end
-    return false
+    return '---'
   end
   
 end

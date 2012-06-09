@@ -34,6 +34,7 @@ gem 'gridify'
 gem 'datatables'
 gem 'simple_datatables'
 gem 'will_paginate'
+gem 'test-unit'
 
 
 # To use ActiveModel has_secure_password

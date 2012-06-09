@@ -5,9 +5,9 @@
   <%= @publisher.name %>
 </p>
 
-
-<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
-<%= link_to 'Back', publishers_path %>
+<%if(current_user!=nil && current_user.admin)%>
+  <%= link_to 'Edit', edit_publisher_path(@publisher) %>
+<%end%>
 
 <%= render :partial=>"shared/example_list", :locals =>{:examples=>@publisher.examples } %>
 <%= link_to "Add Example",  new_example_path(:publisher_id=>@publisher.id) %>

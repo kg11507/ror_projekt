@@ -1,28 +1,5 @@
 <h1>Listing books</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Available</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @books.each do |book| %>
-    <tr>
-      <td><%= link_to book.title, book%></td>
-      <td><%= link_to (book.author.name+" "+book.author.surname) , book.author %></td>
-      <td><%= book.available? %></td>
-      <%if(current_user!=nil && current_user.admin)%>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
-      <%end%>
-    </tr>
-  <% end %>
-</table>
-
 <table id="books">
   <thead>
     <tr>
@@ -31,6 +8,10 @@
       <th>Genre</th>
       <th>Popularity</th>
       <th>Available</th>
+      <%if(current_user!=nil && current_user.admin)%>
+        <th></th>
+        <th></th>
+      <%end%>
     </tr>
   </thead>
   <tbody>
@@ -41,6 +22,10 @@
         <td><%= book.book_genre.name %></td>
         <td><%= book.popularity %></td>
         <td><%= book.available? %></td>
+        <%if(current_user!=nil && current_user.admin)%>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
