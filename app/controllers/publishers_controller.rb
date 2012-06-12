@@ -1,4 +1,5 @@
 class PublishersController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
   # GET /publishers
   # GET /publishers.json
   def index

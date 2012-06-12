@@ -1,4 +1,5 @@
 class BookGenresController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
   # GET /book_genres
   # GET /book_genres.json
   def index

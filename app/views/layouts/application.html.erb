@@ -7,36 +7,48 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    
-      <div id="leftnav">
-        <p>
-            <%= link_to "Books", books_url   %><br/>
-            <%= link_to "Authors", authors_url   %><br/>
-            <%= link_to "Events", events_url   %><br/>
+
+    <div id="leftnav">
+      <p>
+        <%= link_to "Books", books_url   %><br/>
+        <%= link_to "Authors", authors_url   %><br/>
+        <%= link_to "Events", events_url   %><br/>
+        <% if current_user!=nil %>
+          <% if current_user.admin %>
+            <%= link_to "BookGenres", book_genres_url   %><br/>
             <%= link_to "UserInfos", user_infos_url   %><br/>
-            <%= link_to "Panel", "/my_panel"   %><br/>
-            <%= link_to "Publishers", publishers_url   %><br/>
-            <%= link_to "-Addresses", addresses_url   %><br/>
-            <%= link_to "-Examples", examples_url   %><br/>
-            <%= link_to "-Reservations", reservations_url   %><br/>
-            <%= link_to "-Hires", hires_url   %><br/>
-            <%= link_to "-Comments", comments_url   %><br/>
-            <% if user_signed_in? %>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        <br>
-            <% else %>
-              <%= link_to('Login', new_user_session_path)  %>  <br>
-            <% end %>
-            <% if user_signed_in? %>
-              <%= link_to('Edit registration', edit_user_registration_path) %><br>
-            <% else %>
-              <%= link_to('Register', new_user_registration_path)  %><br>
-            <% end %>
-        </p>
-      </div>
-      <div id="content">
-        <p id="notice"><%= notice %></p>
-          <%= yield %>
-      </div>
-    
+          <% end %>
+        <%end%>
+        <%= link_to "Publishers", publishers_url   %><br/>
+        <%if current_user!=nil%>
+          <%= link_to "MyPanel", "/my_panel"   %><br/>
+        <%end%>
+        <%debug=false%>  
+        <%if debug%>
+          <hr/>
+          <%= link_to "-Addresses", addresses_url   %><br/>
+          <%= link_to "-Examples", examples_url   %><br/>
+          <%= link_to "-Reservations", reservations_url   %><br/>
+          <%= link_to "-Hires", hires_url   %><br/>
+          <%= link_to "-Comments", comments_url   %><br/>
+        <%end%>
+      <hr/>
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        <br>
+      <% else %>
+        <%= link_to('Login', new_user_session_path)  %>  <br>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to('Edit registration', edit_user_registration_path) %><br>
+      <% else %>
+        <%= link_to('Register', new_user_registration_path)  %><br>
+      <% end %>
+      </p>
+    </div>
+    <div id="content">
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

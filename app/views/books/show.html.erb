@@ -11,10 +11,14 @@
 <%if(current_user!=nil && current_user.admin)%>
   <%= link_to 'Edit', edit_book_path(@book) %>
 <%end%>
-  
+
 <div style="border-top: 1px solid gray;">
   <%= render :partial=>"shared/example_list", :locals =>{:examples=>@book.examples, :book_id=>@book.id } %>
-  <%= link_to "Add example",   :controller => "examples", :action => "new", :book_id => @book.id %>
+  <% if current_user!=nil%>
+    <% if  current_user.admin %>
+      <%= link_to "Add example",   :controller => "examples", :action => "new", :book_id => @book.id %>
+    <%end%>
+  <%end%>
   <%= render :partial=>"shared/comment_list", :locals =>{:comments=>@book.comments, :subject_id=>@book.id, :subject_type=>"Book"} %>
   <%= link_to "Add comment",   :controller => "comments", :action => "new", :subject_id => @book.id, :subject_type=>"Book" %>
 </div>

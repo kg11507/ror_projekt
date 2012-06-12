@@ -1,5 +1,5 @@
 class ExamplesController < ApplicationController
-  
+  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
   before_filter :find_publishers, :only => [:new, :edit, :update, :create]
   
   # GET /examples
