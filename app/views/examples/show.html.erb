@@ -1,23 +1,21 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Book:</b>
-  <%= @example.book_id %>
+  <%= @example.book.title %>
 </p>
 
 <p>
   <b>Publisher:</b>
-  <%= @example.publisher_id %>
+  <%= @example.publisher.name %>
 </p>
 
 <p>
   <b>Publish date:</b>
-  <%= @example.publish_date %>
+  <%= @example.publish_date.strftime("%d-%m-%Y") %>
 </p>
 
 <p>
   <b>Buy date:</b>
-  <%= @example.buy_date %>
+  <%= @example.buy_date.strftime("%d-%m-%Y") %>
 </p>
 
 <p>
@@ -25,6 +23,15 @@
   <%= @example.description %>
 </p>
 
-
+<% if(@example.get_state=="available")  %>
+  <%= link_to "reserve",   :controller => "examples", :action => "reserve", :id => @example %>
+<%else%>
+  <%   if(@example.get_state=="Already reserved") %>
+    <%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => @example.id %>
+  <% else %>
+    <%= @example.get_state %>
+  <% end %>
+<% end %>
+<br/>
 <%= link_to 'Edit', edit_example_path(@example) %> |
 <%= link_to 'Back', examples_path %>

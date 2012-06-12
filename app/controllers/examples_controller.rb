@@ -27,6 +27,7 @@ class ExamplesController < ApplicationController
   # GET /examples/new
   # GET /examples/new.json
   def new
+    session[:return_to] ||= request.referer
     @example = Example.new
     @example.book_id = params[:book_id]
 
@@ -48,7 +49,7 @@ class ExamplesController < ApplicationController
 
     respond_to do |format|
       if @example.save
-        format.html { redirect_to @example, notice: 'Example was successfully created.' }
+        format.html { redirect_to session[:return_to], notice: 'Example was successfully created.' }
         format.json { render json: @example, status: :created, location: @example }
       else
         format.html { render action: "new" }
@@ -86,18 +87,20 @@ class ExamplesController < ApplicationController
   end
   
   def reserve
+    session[:return_to] ||= request.referer
     Reservation.create({:example_id=>params[:id], :user_id=>current_user.id})
     respond_to do |format|
-      format.html { redirect_to examples_url }
+      format.html { redirect_to session[:return_to], notice: 'Reservation successful.'}
       format.json { head :ok }
     end
   end
   
   def unreserve
+    session[:return_to] ||= request.referer
     @reservation = Reservation.where(params[:example_id], :user_id=>current_user.id).first
     @reservation.destroy
     respond_to do |format|
-      format.html { redirect_to examples_url }
+      format.html { redirect_to session[:return_to], notice: 'Reservation canceled.'}
       format.json { head :ok }
     end
   end

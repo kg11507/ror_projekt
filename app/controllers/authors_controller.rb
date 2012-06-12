@@ -27,6 +27,7 @@ class AuthorsController < ApplicationController
   # GET /authors/new
   # GET /authors/new.json
   def new
+    session[:return_to] ||= request.referer
     @author = Author.new
     
     respond_to do |format|
@@ -47,7 +48,7 @@ class AuthorsController < ApplicationController
 
     respond_to do |format|
       if @author.save
-        format.html { redirect_to authors_url, :notice => 'Author was successfully created.' }
+        format.html { redirect_to session[:return_to], :notice => 'Author was successfully created.' }
         format.json { render :json => @author, :status => :created, :location => @author }
       else
         format.html { render :action => "new" }
