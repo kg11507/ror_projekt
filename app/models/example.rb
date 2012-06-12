@@ -1,8 +1,10 @@
 class Example < ActiveRecord::Base
+  validates_presence_of :book, :publisher_id
+  
   belongs_to :book
-  has_one :reservation
+  has_one :reservation, :dependent=>:destroy
   belongs_to :publisher
-  has_many :hires
+  has_many :hires, :dependent=>:delete_all
   
   def get_state
     if(reservation!=nil)

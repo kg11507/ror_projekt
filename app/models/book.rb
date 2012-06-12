@@ -4,8 +4,8 @@ class Book < ActiveRecord::Base
   belongs_to :author
   belongs_to :book_genre
   
-  has_many :comments, :as => :subject
-  has_many :examples  
+  has_many :comments, :as => :subject, :dependent=>:delete_all
+  has_many :examples, :dependent=>:delete_all
   
   def available?
     if(examples.count>0)
