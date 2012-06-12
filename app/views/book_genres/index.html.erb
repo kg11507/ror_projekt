@@ -1,24 +1,23 @@
 <h1>Listing book_genres</h1>
 <%if @book_genres.count>0%>
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @book_genres.each do |book_genre| %>
-  <tr>
-    <td><%= book_genre.name %></td>
-    <td><%= link_to 'Show', book_genre %></td>
-    <td><%= link_to 'Edit', edit_book_genre_path(book_genre) %></td>
-    <td><%= link_to 'Destroy', book_genre, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+    <% @book_genres.each do |book_genre| %>
+      <tr>
+        <td><%= book_genre.name %></td>
+        <td><%= link_to 'Edit', edit_book_genre_path(book_genre) %></td>
+        <td><%= link_to 'Destroy', book_genre, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
 <%else%>
-No genres
+  No genres
 <%end%>
 <br />
 

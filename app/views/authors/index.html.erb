@@ -1,37 +1,37 @@
 <h1>Listing authors</h1>
 <%if @authors.count>0%>
-<table id="authors">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Description</th>
-      <th>Popularity</th>
-      <th></th>
-      <%if(current_user!=nil && current_user.admin)%>
-        <th></th>
-        <th></th>
-      <%end%>
-    </tr>
-  </thead>
-  <tbody>
-    <% @authors.each do |author| %>
+  <table id="authors">
+    <thead>
       <tr>
-        <td><%= author.name %></td>
-        <td><%= author.surname %></td>
-        <td><%= author.description %></td>
-        <td><%= author.popularity %></td>
-        <td><%= link_to 'Show', author %></td>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Description</th>
+        <th>Popularity</th>
+        <th></th>
         <%if(current_user!=nil && current_user.admin)%>
-          <td><%= link_to 'Edit', edit_author_path(author) %></td>
-          <td><%= link_to 'Destroy', author, :confirm => 'Are you sure?', :method => :delete %></td>
+          <th></th>
+          <th></th>
         <%end%>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @authors.each do |author| %>
+        <tr>
+          <td><%= author.name %></td>
+          <td><%= author.surname %></td>
+          <td><%= author.description %></td>
+          <td><%= author.popularity %></td>
+          <td><%= link_to 'Show', author %></td>
+          <%if(current_user!=nil && current_user.admin)%>
+            <td><%= link_to 'Edit', edit_author_path(author) %></td>
+            <td><%= link_to 'Destroy', author, :confirm => 'Are you sure?', :method => :delete %></td>
+          <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <%else%>
-No authors
+  No authors
 <%end%>
 <br />
 <% if(current_user!=nil && current_user.admin) %>
