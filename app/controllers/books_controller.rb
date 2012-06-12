@@ -96,11 +96,9 @@ class BooksController < ApplicationController
   end
   
   def find_book_genres
-    puts '----++-+-+--+-+-+-+-+-+'
     @book_genres = BookGenre.find(:all).map do |book_genre|
       [book_genre.name, book_genre.id]
     end
-    puts @book_genres.count
   end
 
 end
