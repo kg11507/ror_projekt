@@ -46,7 +46,8 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
  * Table wrapper
  */
 .dataTables_wrapper {
-	position: relative;
+	position: absolute;
+        margin-top: 50px;
 	clear: both;
 	*zoom: 1;
 }
