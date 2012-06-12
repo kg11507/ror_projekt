@@ -1,17 +1,20 @@
 <h1>Comments</h1>
-<table>
-<tr>
-<th>comment</th>
-<th>user</th>
-<th>date</th>
-</tr>
-<% comments.each do |comment| %>
-<tr>
-  <td><%= link_to comment.content, comment %></td>
-  <td><%=  comment.user.email %></td>
-  <td><%= comment.created_at %></td>
-</tr>
-<% end %>
-</table>
-
+<% if comments.count>0 %>
+  <table>
+    <tr>
+      <th>comment</th>
+      <th>user</th>
+      <th>date</th>
+    </tr>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= link_to comment.content, comment %></td>
+        <td><%=  comment.user.email %></td>
+        <td><%= comment.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No comments
+<%end%>
 <br />

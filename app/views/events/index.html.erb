@@ -1,27 +1,29 @@
 <h1>Listing events</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @events.each do |event| %>
+<% if @events.count>0 %>
+  <table>
     <tr>
-      <td><%= event.title %></td>
-      <td><%= event.description %></td>
-      <td><%= link_to 'Show', event %></td>
-      <%if(current_user!=nil && current_user.id==event.user_id)%>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-      <%end%>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
 
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= link_to 'Show', event %></td>
+        <%if(current_user!=nil && current_user.id==event.user_id)%>
+          <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No events.
+<%end%>
 <br />
 <%= will_paginate @events %>
 <%= link_to 'New Event', new_event_path %>

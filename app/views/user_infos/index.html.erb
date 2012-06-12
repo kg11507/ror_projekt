@@ -1,27 +1,29 @@
 <h1>Listing user_infos</h1>
+<% if @user_infos.count>0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Nickname</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Nickname</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @user_infos.each do |user_info| %>
-  <tr>
-    <td><%= user_info.name %></td>
-    <td><%= user_info.surname %></td>
-    <td><%= user_info.nickname %></td>
-    <td><%= link_to 'Show', user_info %></td>
-    <td><%= link_to 'Edit', edit_user_info_path(user_info) %></td>
-    <td><%= link_to 'Destroy', user_info, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+    <% @user_infos.each do |user_info| %>
+      <tr>
+        <td><%= user_info.name %></td>
+        <td><%= user_info.surname %></td>
+        <td><%= user_info.nickname %></td>
+        <td><%= link_to 'Show', user_info %></td>
+        <td><%= link_to 'Edit', edit_user_info_path(user_info) %></td>
+        <td><%= link_to 'Destroy', user_info, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No user_infos
+<%end%>
 <br />
 
 <%= link_to 'New User info', new_user_info_path %>

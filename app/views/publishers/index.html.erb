@@ -1,21 +1,26 @@
 <h1>Listing publishers</h1>
+<% if @publishers.count > 0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @publishers.each do |publisher| %>
-  <tr>
-    <td><%= link_to publisher.name, publisher %></td>
-    <td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
-    <td><%= link_to 'Destroy', publisher, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+    <% @publishers.each do |publisher| %>
+      <tr>
+        <td><%= link_to publisher.name, publisher %></td>
+        <% if current_user!=nil && current_user.admin %>
+          <td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
+          <td><%= link_to 'Destroy', publisher, confirm: 'Are you sure?', method: :delete %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No publishers
+<%end%>
 <br />
-
+<%if current_user!=nil && current_user.admin%>
 <%= link_to 'New Publisher', new_publisher_path %>
+<%end%>

@@ -1,5 +1,5 @@
 <h1>Listing addresses</h1>
-
+<%if @addresses.count>0%>
 <table>
   <tr>
     <th>City</th>
@@ -25,7 +25,9 @@
   </tr>
 <% end %>
 </table>
-
+<%else%>
+No addresses
+<%end%>
 <br />
 
 <%= link_to 'New Address', new_address_path %>

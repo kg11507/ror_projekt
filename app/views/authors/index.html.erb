@@ -1,5 +1,5 @@
 <h1>Listing authors</h1>
-
+<%if @authors.count>0%>
 <table id="authors">
   <thead>
     <tr>
@@ -30,9 +30,9 @@
     <% end %>
   </tbody>
 </table>
-
-<br />
-<%= will_paginate @authors %>
+<%else%>
+No authors
+<%end%>
 <br />
 <% if(current_user!=nil && current_user.admin) %>
   <%= link_to 'New Author', new_author_path %>

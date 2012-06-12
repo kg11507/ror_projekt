@@ -1,26 +1,29 @@
 <h1>Examples</h1>
-<table>
-  <tr>
-    <th>example</th>
-    <th>example</th>
-    <th>status</th>
-  </tr>
-  <% examples.each do |example| %>
+<% if examples.count > 0 %>
+  <table>
     <tr>
-      <td><%= link_to "example", example %></td>
-      <td>
-        <% if(example.get_state=="available")  %>
-          <%= link_to "reserve",   :controller => "examples", :action => "reserve", :id => example %>
-        <%else%>
-
-          <%   if(example.get_state=="Already reserved") %>
-            <%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => example.id %>
-          <% else %>
-            <%= example.get_state %>
+      <th>example</th>
+      <th>example</th>
+      <th>status</th>
+    </tr>
+    <% examples.each do |example| %>
+      <tr>
+        <td><%= link_to "example", example %></td>
+        <td>
+          <% if(example.get_state=="available")  %>
+            <%= link_to "reserve",   :controller => "examples", :action => "reserve", :id => example %>
+          <%else%>
+            <%   if(example.get_state=="Already reserved") %>
+              <%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => example.id %>
+            <% else %>
+              <%= example.get_state %>
+            <% end %>
           <% end %>
         </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No examples.
+<%end%>
 <br />

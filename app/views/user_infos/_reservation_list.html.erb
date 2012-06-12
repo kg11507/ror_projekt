@@ -1,14 +1,18 @@
 <h1>My Reservations</h1>
-<table>
-  <tr>
-    <th>Book</th>
-    <th></th>
-  </tr>
-  <% reservations.each do |reservation| %>
+<%if reservations.count>0%>
+  <table>
     <tr>
-      <td><%= link_to reservation.example.book.title, reservation.example.book %></td>
-      <td><%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => reservation.example.id %></td>
+      <th>Book</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <% reservations.each do |reservation| %>
+      <tr>
+        <td><%= link_to reservation.example.book.title, reservation.example.book %></td>
+        <td><%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => reservation.example.id %></td>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No reservations
+<%end%>
 <br/>

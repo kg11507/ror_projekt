@@ -1,25 +1,27 @@
 <h1>Listing hires</h1>
+<% if @hires>0 %>
+  <table>
+    <tr>
+      <th>Book</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Book</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @hires.each do |hire| %>
-  <tr>
-    <td><%= hire.example_id %></td>
-    <td><%= hire.user_id %></td>
-    <td><%= link_to 'Show', hire %></td>
-    <td><%= link_to 'Edit', edit_hire_path(hire) %></td>
-    <td><%= link_to 'Destroy', hire, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+    <% @hires.each do |hire| %>
+      <tr>
+        <td><%= hire.example_id %></td>
+        <td><%= hire.user_id %></td>
+        <td><%= link_to 'Show', hire %></td>
+        <td><%= link_to 'Edit', edit_hire_path(hire) %></td>
+        <td><%= link_to 'Destroy', hire, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No hires
+<%end%>
 <br />
 
 <%= link_to 'New Hire', new_hire_path %>

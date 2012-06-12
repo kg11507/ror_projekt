@@ -1,14 +1,18 @@
 <h1>Hires</h1>
-<table>
-  <tr>
-    <th>Book</th>
-    <th>Return date</th>
-  </tr>
-  <% hires.each do |hire| %>
+<% if hires.count>0 %>
+  <table>
     <tr>
-      <td><%= link_to hire.example.book.title, hire.example.book %></td>
-      <td><%= hire.return_status %></td>
+      <th>Book</th>
+      <th>Return date</th>
     </tr>
-  <% end %>
-</table>
+    <% hires.each do |hire| %>
+      <tr>
+        <td><%= link_to hire.example.book.title, hire.example.book %></td>
+        <td><%= hire.return_status %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No hires
+<%end%>
 <br/>

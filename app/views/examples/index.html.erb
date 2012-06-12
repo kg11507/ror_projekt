@@ -1,31 +1,33 @@
 <h1>Listing examples</h1>
+<% if @examples.count>0 %>
+  <table>
+    <tr>
+      <th>Book</th>
+      <th>Publisher</th>
+      <th>Publish date</th>
+      <th>Buy date</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Book</th>
-    <th>Publisher</th>
-    <th>Publish date</th>
-    <th>Buy date</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @examples.each do |example| %>
-  <tr>
-    <td><%= example.book_id %></td>
-    <td><%= example.publisher_id %></td>
-    <td><%= example.publish_date %></td>
-    <td><%= example.buy_date %></td>
-    <td><%= example.description %></td>
-    <td><%= link_to 'Show', example %></td>
-    <td><%= link_to 'Edit', edit_example_path(example) %></td>
-    <td><%= link_to 'Destroy', example, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+    <% @examples.each do |example| %>
+      <tr>
+        <td><%= example.book_id %></td>
+        <td><%= example.publisher_id %></td>
+        <td><%= example.publish_date.strftime("%d-%m-%Y") %></td>
+        <td><%= example.buy_date.strftime("%d-%m-%Y") %></td>
+        <td><%= example.description %></td>
+        <td><%= link_to 'Show', example %></td>
+        <td><%= link_to 'Edit', edit_example_path(example) %></td>
+        <td><%= link_to 'Destroy', example, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No examples
 <% end %>
-</table>
-
 <br />
 
 <%= link_to 'New Example', new_example_path %>

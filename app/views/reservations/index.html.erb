@@ -1,25 +1,27 @@
 <h1>Listing reservations</h1>
+<% if @reservations.count>0 %>
+  <table>
+    <tr>
+      <th>Example</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Example</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @reservations.each do |reservation| %>
-  <tr>
-    <td><%= reservation.example_id %></td>
-    <td><%= reservation.user_id %></td>
-    <td><%= link_to 'Show', reservation %></td>
-    <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-    <td><%= link_to 'Destroy', reservation, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.example_id %></td>
+        <td><%= reservation.user_id %></td>
+        <td><%= link_to 'Show', reservation %></td>
+        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+        <td><%= link_to 'Destroy', reservation, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+<%else%>
+  No resertvations
+<%end%>
 <br />
 
 <%= link_to 'New Reservation', new_reservation_path %>
