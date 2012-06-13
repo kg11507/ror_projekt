@@ -19,6 +19,9 @@
       <%= link_to "Add example",   :controller => "examples", :action => "new", :book_id => @book.id %>
     <%end%>
   <%end%>
+  <hr/>
   <%= render :partial=>"shared/comment_list", :locals =>{:comments=>@book.comments, :subject_id=>@book.id, :subject_type=>"Book"} %>
   <%= link_to "Add comment",   :controller => "comments", :action => "new", :subject_id => @book.id, :subject_type=>"Book" %>
 </div>
+<hr/>
+<%= link_to 'Back', "/back" %>

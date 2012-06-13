@@ -22,6 +22,9 @@
   <%if(current_user!=nil && current_user.admin)%>
     <%= link_to "Add Book",  new_book_path(:author_id=>@author.id) %>
   <%end%>
+  <hr/>
   <%= render :partial=>"shared/comment_list", :locals =>{:comments=>@author.comments} %>
   <%= link_to "Add commet",   :controller => "comments", :action => "new", :subject_id => @author.id, :subject_type=>"Author" %>
 </div>
+<hr/>
+<%= link_to 'Back', "/back" %>

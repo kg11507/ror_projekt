@@ -33,7 +33,6 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @book.author_id=params[:author_id]
-    #    session[:return_to] ||= request.referer
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @book }

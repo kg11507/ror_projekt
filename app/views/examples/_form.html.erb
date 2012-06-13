@@ -4,9 +4,9 @@
       <h2><%= pluralize(@example.errors.count, "error") %> prohibited this example from being saved:</h2>
 
       <ul>
-      <% @example.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @example.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -21,8 +21,14 @@
     <%= f.select :publisher_id, @publishers %>
   </div>
   <div class="field">
-    <%= f.label :publish_date %><br />
-    <%= f.date_select :publish_date %>
+    <script>
+      $(function() {
+        $( "#example_publish_date" ).datepicker();
+      });
+    </script>
+
+   <%= f.label :publish_date %><br />
+    <%= f.text_field :publish_date %>
   </div>
   <div class="field">
     <%= f.label :buy_date %><br />

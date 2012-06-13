@@ -10,13 +10,17 @@
       <tr>
         <td><%= link_to "example", example %></td>
         <td>
-          <% if(example.get_state=="available")  %>
+          <%current_id=nil%>
+          <%if current_user!=nil%>
+            <%current_id=current_user.id%>
+          <%end%>
+          <% if(example.get_state(current_id)=="available")  %>
             <%= link_to "reserve",   :controller => "examples", :action => "reserve", :id => example %>
           <%else%>
-            <%   if(example.get_state=="Already reserved") %>
+            <%   if(example.get_state(current_id)=="Already reserved") %>
               <%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => example.id %>
             <% else %>
-              <%= example.get_state %>
+              <%= example.get_state(current_id) %>
             <% end %>
           <% end %>
         </td>

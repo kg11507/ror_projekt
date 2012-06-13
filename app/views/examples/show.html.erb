@@ -1,11 +1,11 @@
 <p>
   <b>Book:</b>
-  <%= @example.book.title %>
+  <%= link_to @example.book.title, @example.book %>
 </p>
 
 <p>
   <b>Publisher:</b>
-  <%= @example.publisher.name %>
+  <%= link_to @example.publisher.name, @example.publisher %>
 </p>
 
 <p>
@@ -23,15 +23,22 @@
   <%= @example.description %>
 </p>
 
-<% if(@example.get_state=="available")  %>
+<p>
+  <b>Status:</b>
+<%current_id=nil%>
+<%if current_user!=nil%>
+  <%current_id = current_user.id%>
+<%end%>
+<% if(@example.get_state(current_id)=="available")  %>
   <%= link_to "reserve",   :controller => "examples", :action => "reserve", :id => @example %>
 <%else%>
-  <%   if(@example.get_state=="Already reserved") %>
+  <%   if(@example.get_state(current_id)=="Already reserved") %>
     <%= link_to "unreserve",   :controller => "examples", :action => "unreserve", :example_id => @example.id %>
   <% else %>
-    <%= @example.get_state %>
+    <%= @example.get_state(current_id) %>
   <% end %>
 <% end %>
+</p>
 <br/>
 <%if(current_user!=nil && current_user.admin)%>
   <%= link_to 'Edit', edit_example_path(@example) %> |

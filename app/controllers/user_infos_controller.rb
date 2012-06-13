@@ -1,6 +1,6 @@
 class UserInfosController < ApplicationController
-  before_filter :admin?, :only => [ :new, :destroy] 
-  
+  before_filter :admin?, :only => [ :new, :destroy, :index] 
+  before_filter :my_panel?, :only => [ :show, :edit] 
   @@model=UserInfo
   
   # GET /user_infos
@@ -102,4 +102,16 @@ class UserInfosController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def my_panel?
+    if(current_user!=nil && current_user.admin)
+      return
+    end
+    @user_info = UserInfo.find(params[:id])
+    if(@user_info.id!=current_user.user_info.id)
+      redirect_to "/perm.html"
+      return
+    end
+  end
+  
 end

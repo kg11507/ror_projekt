@@ -6,9 +6,9 @@ class Example < ActiveRecord::Base
   belongs_to :publisher
   has_many :hires, :dependent=>:delete_all
   
-  def get_state
+  def get_state current_id
     if(reservation!=nil)
-      if(reservation.user_id==1)
+      if(current_id!=nil && reservation.user_id==current_id)
         return "Already reserved"
       else
         return "unavailable"
