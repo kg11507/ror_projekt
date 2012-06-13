@@ -1,5 +1,8 @@
 class PublishersController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter :admin?, :only => [ :new, :edit, :update, :destroy] 
+  
+  @@model=Publisher
+  
   # GET /publishers
   # GET /publishers.json
   def index
@@ -81,4 +84,5 @@ class PublishersController < ApplicationController
       format.json { head :ok }
     end
   end
+  
 end

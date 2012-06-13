@@ -1,5 +1,8 @@
 class HiresController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter :admin?, :only => [ :new, :edit, :update, :destroy] 
+  
+  @@model=Hire
+  
   # GET /hires
   # GET /hires.json
   def index

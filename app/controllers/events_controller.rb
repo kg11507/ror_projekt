@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
   before_filter :find_users, :only => [:new, :edit, :update, :create]
+  
+  @@model=Event
+  
   # GET /events
   # GET /events.json
   def index

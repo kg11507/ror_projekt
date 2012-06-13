@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  @@model=Comment
+  
   # GET /comments
   # GET /comments.json
   def index
@@ -81,4 +84,5 @@ class CommentsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
 end

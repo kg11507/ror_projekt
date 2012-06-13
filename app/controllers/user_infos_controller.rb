@@ -1,5 +1,8 @@
 class UserInfosController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter :admin?, :only => [ :new, :destroy] 
+  
+  @@model=UserInfo
+  
   # GET /user_infos
   # GET /user_infos.json
   def index

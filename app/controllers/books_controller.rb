@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
-
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
   before_filter :find_authors, :find_book_genres, :only => [:new, :edit, :update, :create]
+  before_filter :admin?, :only => [ :new, :edit, :update, :destroy] 
+  
+  @@model=Book
+  
   # GET /books
   # GET /books.json
   def index

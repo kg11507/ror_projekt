@@ -1,5 +1,9 @@
 class AddressesController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter lambda{ my_authenticate? Address }, :only => [ :new, :edit, :update, :destroy]
+  
+  
+  @@model=Address
+  
   # GET /addresses
   # GET /addresses.json
   def index

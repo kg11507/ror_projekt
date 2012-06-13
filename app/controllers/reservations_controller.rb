@@ -1,5 +1,8 @@
 class ReservationsController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
+  before_filter :admin?, :only => [ :new, :edit, :update, :destroy] 
+  
+  @@model=Reservation
+  
   # GET /reservations
   # GET /reservations.json
   def index

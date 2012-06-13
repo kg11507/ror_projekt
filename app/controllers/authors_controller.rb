@@ -1,6 +1,9 @@
 class AuthorsController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy]
   before_filter :find_users, :only => [:new, :edit, :update, :create]
+  before_filter :admin?, :only => [ :new, :edit, :update, :destroy] 
+  
+  @@model=Author
+  
   # GET /authors
   # GET /authors.json
   def index
@@ -27,7 +30,6 @@ class AuthorsController < ApplicationController
   # GET /authors/new
   # GET /authors/new.json
   def new
-    session[:return_to] ||= request.referer
     @author = Author.new
     
     respond_to do |format|
