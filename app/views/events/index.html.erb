@@ -26,4 +26,6 @@
 <%end%>
 <br />
 <%= will_paginate @events %>
-<%= link_to 'New Event', new_event_path %>
+<%if current_user!=nil && current_user.admin%>
+  <%= link_to 'New Event', new_event_path %>
+<%end%>

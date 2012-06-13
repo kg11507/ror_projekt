@@ -8,5 +8,6 @@
 <%end%>
 
 <%= render :partial=>"shared/example_list", :locals =>{:examples=>@publisher.examples } %>
+<%if current_user!=nil && current_user.admin%>
 <%= link_to "Add Example",  new_example_path(:publisher_id=>@publisher.id) %>
-
+<%end%>

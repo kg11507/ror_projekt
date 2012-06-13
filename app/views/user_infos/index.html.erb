@@ -5,6 +5,8 @@
       <th>Name</th>
       <th>Surname</th>
       <th>Nickname</th>
+      <th>Reservations</th>
+      <th>Hires</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,6 +17,8 @@
         <td><%= user_info.name %></td>
         <td><%= user_info.surname %></td>
         <td><%= user_info.nickname %></td>
+        <td><%= user_info.user.reservations.count %></td>
+        <td><%= user_info.user.hires.count %></td>
         <td><%= link_to 'Show', user_info %></td>
         <td><%= link_to 'Edit', edit_user_info_path(user_info) %></td>
         <td><%= link_to 'Destroy', user_info, confirm: 'Are you sure?', method: :delete %></td>

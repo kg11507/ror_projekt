@@ -33,5 +33,7 @@
   <% end %>
 <% end %>
 <br/>
-<%= link_to 'Edit', edit_example_path(@example) %> |
-<%= link_to 'Back', examples_path %>
+<%if(current_user!=nil && current_user.admin)%>
+  <%= link_to 'Edit', edit_example_path(@example) %> |
+<%end%>
+<%= link_to 'Back', "/back" %>

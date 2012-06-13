@@ -98,6 +98,7 @@ Devise2::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   match "/my_panel" => "user_infos#my_panel"
+  match "/back" => "application#back"
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   
