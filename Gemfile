@@ -29,6 +29,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'cancan'
 gem 'datatables'
 gem 'will_paginate'
 gem 'test-unit'
