@@ -1,4 +1,5 @@
 class UserInfosController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :new, :edit, :update, :destroy, :show]
   before_filter :admin?, :only => [ :new, :destroy, :index] 
   before_filter :my_panel?, :only => [ :show, :edit] 
   @@model=UserInfo
