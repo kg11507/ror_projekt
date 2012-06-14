@@ -6,6 +6,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require dataTab/jquery.dataTables
+//= require datatables/jquery.dataTables
 //= require_tree .
 //= require rails.validations
+
+
+$(function() {
+    $( "#example_publish_date" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+});
+
+$(function() {
+    $( "#example_buy_date" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+});
+

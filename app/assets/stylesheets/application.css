@@ -4,10 +4,8 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree . 
- *= require dataTab/jquery.dataTables
- *= require jquery.ui.core
- *= require jquery.ui.theme
-*/
+ *= require datatables/jquery.dataTables
+ */
 #container
 {
 width: 90%;
@@ -64,6 +62,12 @@ padding: .5em;
 color: #333;
 background-color: #ddd;
 border-top: 1px solid gray;
+}
+
+.flash
+{
+    color: #f00;
+    font-size: 20px;
 }
 
 #leftnav p, #rightnav p { margin: 0 0 1em 0; }
