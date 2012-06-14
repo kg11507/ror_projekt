@@ -3,8 +3,8 @@ class CreateExamples < ActiveRecord::Migration
     create_table :examples do |t|
       t.integer :book_id
       t.integer :publisher_id
-      t.datetime :publish_date
-      t.datetime :buy_date
+      t.date :publish_date
+      t.date :buy_date
       t.text :description
 
       t.timestamps

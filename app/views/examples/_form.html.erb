@@ -21,18 +21,12 @@
     <%= f.select :publisher_id, @publishers %>
   </div>
   <div class="field">
-    <script>
-      $(function() {
-        $( "#example_publish_date" ).datepicker();
-      });
-    </script>
-
    <%= f.label :publish_date %><br />
     <%= f.text_field :publish_date %>
   </div>
   <div class="field">
     <%= f.label :buy_date %><br />
-    <%= f.date_select :buy_date %>
+    <%= f.text_field :buy_date %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

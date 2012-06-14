@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(:version => 20120607003524) do
   create_table "examples", :force => true do |t|
     t.integer  "book_id"
     t.integer  "publisher_id"
-    t.datetime "publish_date"
-    t.datetime "buy_date"
+    t.date     "publish_date"
+    t.date     "buy_date"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

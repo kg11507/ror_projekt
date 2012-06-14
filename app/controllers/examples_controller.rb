@@ -108,7 +108,7 @@ class ExamplesController < ApplicationController
   private
   def find_publishers
     @publishers = Publisher.find(:all).map do |publisher|
-      [publisher.name]
+      [publisher.name, publisher.id]
     end
   end
    
