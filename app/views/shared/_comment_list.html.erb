@@ -8,7 +8,7 @@
     </tr>
     <% comments.each do |comment| %>
       <tr>
-        <td><%= link_to comment.content, comment[0..20] %></td>
+        <td><%= link_to comment.content[0..20], comment %></td>
         <td><%=  comment.user.email %></td>
         <td><%= comment.created_at.strftime("%d-%m-%Y")%></td>
       </tr>

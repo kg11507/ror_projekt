@@ -3,5 +3,6 @@
   <%= @comment.content %>
 </p>
 
-
-<%= link_to 'Edit', edit_comment_path(@comment) %>
+<%if current_user!=nil && current_user.id==@comment.user_id%>
+  <%= link_to 'Edit', edit_comment_path(@comment) %>
+<%end%>
