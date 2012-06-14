@@ -24,20 +24,19 @@ class ApplicationController < ActionController::Base
   end
   
   def my_authenticate?
-    puts "yyy "
+#    puts "yyy "
     if(current_user!=nil && current_user.admin)
       return
     end
     if params[:id]!=nil
-      puts "zzz "+params[:id]
+#      puts "zzz "+params[:id]
       instance=@@model.find(params[:id])
       #      puts "zzz "+instance.to_s+" "+instance.user_id.to_s
       #      //if(instance.methods.include? :user_id && true)
 
         (user_id = instance.user_id )rescue nil
 
-      puts "xxx"
-      puts "xxx "+user_id.to_s+" "+current_user.id.to_s 
+#      (puts "xxx "+user_id.to_s+" "+current_user.id.to_s )rescue nil
       if(user_id!=nil && user_id!=current_user.id)
         redirect_to "/perm.html"
       end
