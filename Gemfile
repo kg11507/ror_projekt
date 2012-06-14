@@ -29,10 +29,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
-gem 'gridify'
 gem 'datatables'
-gem 'cancan'
-gem 'simple_datatables'
 gem 'will_paginate'
 gem 'test-unit'
 gem 'client_side_validations'

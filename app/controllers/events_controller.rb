@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     #    @events = Event.all
-    @events = Event.paginate(:page => params[:page], :per_page=>3)
+    @events = Event.paginate(:page => params[:page], :per_page=>10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +47,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.user_id = current_user.id
-    EventMailer.event_notify.deliver
     respond_to do |format|
       if @event.save
         format.html { redirect_to events_url, :notice => 'Event was successfully created.' }

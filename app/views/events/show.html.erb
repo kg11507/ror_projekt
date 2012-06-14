@@ -14,5 +14,3 @@
 
 <%= render :partial=>"shared/comment_list", :locals =>{:comments=>@event.comments, :subject_id=>@event.id, :subject_type=>"Event"} %>
 <%= link_to "Add comment",   :controller => "comments", :action => "new", :subject_id => @event.id, :subject_type=>"Event" %>
-
-<%= link_to 'Back', "/back" %>
